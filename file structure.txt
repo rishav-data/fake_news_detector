@@ -1,0 +1,45 @@
+fake_news_detector/
+│
+├── app.py
+├── config.py
+├── requirements.txt
+│
+├── pipeline/
+|   └── pipeline.py
+|
+├── routes/
+│   └── analyze.py
+│
+├── scraping/
+│   ├── article_reader.py        # Text vs URL routing
+│   └── scraper.py               # Firecrawl logic
+│
+├── model/
+│   └── bert_classifier.py       # Category prediction
+│   └── train_bert.py
+|
+├── scoring/
+│   ├── category_score.py        # Neutral/Biased/Contradictory → 10/5/0
+│   ├── publisher_score.py       # Supabase lookup
+│   └── verdict.py               # Final score & label
+│
+├── database/
+│   ├── supabase_client.py
+│   └── schema.sql
+│
+├── utils/
+│   ├── text_cleaner.py
+│   └── publisher_normalizer.py
+|  
+├── data/
+|   ├──train.csv
+|   ├──val.csv
+│   ├──test.csv
+|
+├── templates/
+|   ├──index.html
+|   ├──article_link.html
+│   ├──article_text.html
+|
+└── .env
+

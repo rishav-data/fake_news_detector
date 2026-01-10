@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake News Detection System</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #ffffff;
+            color: #141c2c;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #1c5494;
+            margin-bottom: 10px;
+        }
+        .description {
+            color: #5c84b0;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        .score-box {
+            background-color: #f5f7fa;
+            border-left: 6px solid #f5a747;
+            padding: 20px;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+        .score-box h3 {
+            margin-top: 0;
+            color: #1c5494;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        a.button {
+            text-decoration: none;
+            padding: 15px 30px;
+            background-color: #1c5494;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        a.button:hover {
+            background-color: #5c84b0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Fake News Detection System</h1>
+
+    <p class="description">
+        This is a student-built project developed to analyze online news articles
+        using Natural Language Processing and credibility scoring. The system evaluates
+        article content, publisher reliability, and linguistic patterns to estimate
+        the likelihood of misinformation.
+    </p>
+
+    <div class="score-box">
+        <h3>How the Scoring Works</h3>
+        <p>
+            • <strong>Score ≥ 20</strong> — Very high chance of the news being real.<br>
+            • <strong>Score between 11 and 19</strong> — Uncertain or mixed credibility.<br>
+            • <strong>Score ≤ 10</strong> — Article is almost certainly fake or misleading.
+        </p>
+        <p>
+            The final score is calculated internally by combining article analysis,
+            source credibility, and category-based weighting.
+        </p>
+    </div>
+
+    <div class="buttons">
+        <a class="button" href="/article-link">Enter Article Link</a>
+        <a class="button" href="/article-text">Enter Article Text</a>
+    </div>
+</div>
+
+</body>
+</html>

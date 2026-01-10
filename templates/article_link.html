@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Article Link</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #141c2c;
+            position: relative;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background: #1c5494;
+            color: white;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            padding: 80px 20px;
+        }
+
+        h1 {
+            color: #1c5494;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #5c84b0;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #5c84b0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 12px 25px;
+            background: #f5a747;
+            border: none;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<a href="/" class="back-btn">✕</a>
+
+<div class="container">
+    <h1>Submit Article Link</h1>
+
+    <!-- IMPORTANT: action is /analyze -->
+    <form method="post" action="/analyze">
+        <label for="article_url">Article URL</label>
+        <input type="text" id="article_url" name="article_url" placeholder="https://example.com/news">
+
+        <label for="publisher">Article Publisher (optional)</label>
+        <input type="text" id="publisher" name="publisher" placeholder="e.g. BBC, Reuters">
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>

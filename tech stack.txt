@@ -1,0 +1,95 @@
+Technology Stack
+
+The Fake News Detection system is implemented using a modular, API-driven architecture focused on explainability, privacy, and scalability.
+
+Backend
+
+Python 3.10
+
+Flask
+Used as a lightweight backend framework to orchestrate API requests, scraping, model inference, database lookup, and verdict generation. Flask is chosen for its simplicity and suitability for machine-learning inference pipelines.
+
+Natural Language Processing & Machine Learning
+
+BERT (Bidirectional Encoder Representations from Transformers)
+Used for contextual analysis and classification of article content into:
+
+Neutral
+
+Biased
+
+Contradictory
+
+HuggingFace Transformers
+
+PyTorch
+The BERT model processes article text directly in memory without storing user content.
+
+Scikit-learn
+Used for evaluation metrics during model development.
+
+Web Scraping & Content Extraction
+
+Firecrawl
+Primary tool for extracting clean article text from URLs, including dynamic and JavaScript-heavy websites.
+
+Requests
+
+BeautifulSoup (fallback)
+
+Scraped article content is passed directly to the BERT model and is not stored in any database.
+
+Database
+
+Supabase (PostgreSQL)
+A relational database used exclusively to store developer-curated publisher credibility scores.
+
+Database characteristics:
+
+Read-only during runtime
+
+Contains known publishers and their credibility scores (0–10)
+
+No article content, user data, or scraped text is stored
+
+Scoring & Verdict Logic
+
+Category Scoring
+
+Neutral → 10
+
+Biased → 5
+
+Contradictory → 0
+
+Publisher Credibility Scoring
+
+Retrieved from the Supabase database
+
+Defaults to 0 if the publisher is not found
+
+Final Verdict Logic
+
+Total Score = Category Score + Publisher Credibility Score
+
+Threshold-based interpretation to determine likelihood of news being real or fake
+
+API & Data Format
+
+RESTful APIs built using Flask
+
+JSON request and response format
+
+Stateless inference with no persistent storage of user inputs
+
+Frontend (Out of Scope for Current Phase)
+
+Planned support for:
+
+React (Web)
+
+Kotlin (Android)
+
+Java Swing (Desktop demo)
+
+The backend is frontend-agnostic and designed to integrate with multiple client platforms.
