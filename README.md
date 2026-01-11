@@ -1,121 +1,229 @@
-# Fake News Detection System 📰🤖
+# 📰 Fake News Detection System
 
-A hackathon project that analyzes online news articles to estimate their credibility using
-Natural Language Processing (NLP) and source-based scoring.
+An end-to-end **Fake News Detection** web application that analyzes online news articles using **Natural Language Processing**, **BERT-based content classification**, and **publisher credibility scoring** to estimate the likelihood of misinformation.
 
-The system combines **content analysis using BERT** with **publisher credibility scoring**
-to produce an explainable final verdict.
+Built as a modular, explainable, and privacy-conscious system, this project combines ML inference with transparent scoring logic and a clean web UI.
 
 ---
 
-## 🚀 Features
+## ✨ Key Features
 
-- 🔍 Accepts **news article URLs** or **raw pasted text**
-- 🧠 Uses **BERT-based NLP classification** to analyze article tone
-- 🏢 Incorporates **publisher credibility scoring** via a curated database
-- 🧮 Transparent, rule-based **final scoring logic**
-- 🌐 Simple **Flask web interface**
-- 🔐 Privacy-first: **no user data or article content is stored**
+* 🔍 **Content Analysis with BERT**
+  Classifies articles into **Neutral**, **Biased**, or **Contradictory** using a fine-tuned transformer model.
+
+* 🏛️ **Publisher Credibility Scoring**
+  Looks up known publishers from a curated Supabase database (score range: 0–10).
+
+* 🧮 **Explainable Final Verdict**
+  Combines content score + publisher score into a transparent, threshold-based credibility verdict.
+
+* 🌐 **Flexible Input**
+  Analyze either:
+
+  * A **news article URL** (auto-scraped), or
+  * **Raw article text** (pasted directly).
+
+* 🔐 **Privacy First**
+  No article text or user data is stored. All inference happens in-memory.
 
 ---
 
-## 🧠 How It Works
+## 🧠 How the System Works
 
-1. **Input**
-   - User submits an article URL or pastes article text
+1. **User Input**
+   User submits a news article as a link or raw text.
 
 2. **Article Extraction**
-   - URLs are scraped using Firecrawl (with BeautifulSoup fallback)
-   - Extracted text is processed in memory only
 
-3. **Content Classification (BERT)**
-   - The article is classified into one of:
-     - `Neutral`
-     - `Biased`
-     - `Contradictory`
+   * URLs are scraped using **Firecrawl** (with BeautifulSoup fallback).
+   * Raw text is passed directly.
 
-4. **Scoring**
-   - Category Score:
-     - Neutral → 10
-     - Biased → 5
-     - Contradictory → 0
-   - Publisher Score:
-     - Retrieved from Supabase (0–10)
-     - Defaults to 0 if publisher is unknown
+3. **BERT Classification**
+   The article is classified into one of three categories:
+
+   * Neutral
+   * Biased
+   * Contradictory
+
+4. **Scoring Logic**
+
+   **Category Score**
+
+   * Neutral → 10
+   * Biased → 5
+   * Contradictory → 0
+
+   **Publisher Score**
+
+   * Retrieved from Supabase (0–10)
+   * Defaults to 0 if unknown
 
 5. **Final Verdict**
-   - Total Score = Category Score + Publisher Score
-   - Verdict thresholds:
-     - High score → Possible high credibility
-     - Medium score → Needs further verification
-     - Low score → Credibility uncertain
+
+   ```text
+   Total Score = Category Score + Publisher Score
+
+   ≥ 15  → Possible high credibility
+   7–14  → Needs further verification
+   < 7   → Credibility uncertain
+   ```
 
 ---
 
-## 🧰 Tech Stack
+## 🖼️ System Architecture
 
-### Backend
-- Python 3
-- Flask
+![System Flow Diagram](DFD.png)
 
-### Machine Learning / NLP
-- BERT (HuggingFace Transformers)
-- PyTorch
-- Scikit-learn (training & evaluation)
-
-### Web Scraping
-- Firecrawl
-- Requests + BeautifulSoup (fallback)
-
-### Database
-- Supabase (PostgreSQL)
-  - Stores **only publisher credibility scores**
-  - No articles, no user data
-
-### Frontend
-- HTML + CSS (Flask templates)
+The pipeline clearly separates scraping, NLP inference, scoring, and verdict generation to keep the system modular and explainable.
 
 ---
 
+## 🖥️ Web Interface
+
+### Home Page
+
+![Home UI](UI 1.png)
+
+Users can choose whether to submit a **link** or **article text**.
+
+### Submit Article Link
+
+![Article Link UI](ui2.png)
+
+* Automatically extracts article content
+* Optional publisher input
+
+### Submit Article Text
+
+![Article Text UI](ui3.png)
+
+* Paste full article content directly
+* Optional publisher input
 
 ---
 
-## 🧪 Model Training
+## 📊 Example Output
 
-Trained model files are **not included** in this repository.
+### Credibility Result Page
 
-To train the model locally:
-run python model/train_bert.py
+![Result UI](output1.png)
 
-This will generate model artifacts inside:
+Displays:
 
-model/bert_news_model/
+* Final credibility score
+* Verdict explanation
+* Content category
+* Publisher credibility
 
-## 🔐 Privacy & Ethics
+### Console Prediction (BERT)
 
-No scraped articles are stored
+![Model Prediction](output 2.png)
 
-No user data is logged
+Shows raw model prediction and confidence during development/debugging.
 
-Publisher scores are manually curated
+---
 
-Final verdicts are advisory, not absolute
+## 🤖 Model Training
 
-This project is intended for educational and research purposes.
+The project includes a full **BERT training pipeline** using HuggingFace Transformers.
 
-🏁 Hackathon Notes
+* Model: `bert-base-uncased`
+* Labels: Neutral, Biased, Contradictory
+* Frameworks: PyTorch + HuggingFace Trainer
 
-Designed for explainability, not black-box predictions
+### Training Progress
 
-Modular architecture allows easy upgrades
+![Training Progress](during training.png)
 
-Can be extended with:
+### Evaluation Results
 
-Claim-level fact checking
+![Evaluation Results](eval test.png)
 
-Multilingual support
+Achieves high accuracy on the test set, demonstrating strong contextual understanding.
 
-Social media misinformation detection
+---
 
-BUILT BY Bhartya Coding Party
-Hackathon project – 2026
+## 🗂️ Project Structure
+
+```text
+fake_news_detector/
+│
+├── app.py                  # Flask app entry point
+├── config.py               # Environment & config loading
+├── requirements.txt
+│
+├── scraping/               # Article extraction
+│   ├── article_reader.py
+│   └── scraper.py
+│
+├── model/                  # NLP models
+│   ├── bert_classifier.py
+│   └── train_bert.py
+│
+├── scoring/                # Scoring logic
+│   ├── category_score.py
+│   ├── publisher_score.py
+│   └── verdict.py
+│
+├── database/               # Supabase integration
+│   ├── supabase_client.py
+│   └── schema.sql
+│
+├── utils/                  # Helpers
+│   ├── text_cleaner.py
+│   └── publisher_normalizer.py
+│
+├── data/                   # Training datasets
+│   ├── train.csv
+│   ├── val.csv
+│   └── test.csv
+│
+├── templates/              # HTML UI
+│   ├── index.html
+│   ├── article_link.html
+│   └── article_text.html
+│
+└── .env
+```
+
+---
+
+## ⚙️ Tech Stack
+
+* **Backend**: Python 3.10, Flask
+* **NLP / ML**: BERT, HuggingFace Transformers, PyTorch
+* **Scraping**: Firecrawl, Requests, BeautifulSoup
+* **Database**: Supabase (PostgreSQL)
+* **Frontend**: HTML, CSS (Flask templates)
+
+---
+
+## 🚀 Running the Project
+
+```bash
+pip install -r requirements.txt
+python app.py
+```
+
+Make sure your `.env` file contains:
+
+```env
+FIRECRAWL_API_KEY=your_key
+SUPABASE_URL=your_url
+SUPABASE_KEY=your_key
+```
+
+---
+
+## ⚠️ Disclaimer
+
+This system provides an **automated credibility estimate** and is intended as a **decision-support tool**, not a definitive judgment of truth.
+
+---
+
+## 👨‍💻 Author
+
+Built as part of an AI/ML-focused project exploring **misinformation detection**, **explainable scoring**, and **responsible NLP deployment**.
+
+If this helped you, feel free to ⭐ the repository and experiment further.
+
