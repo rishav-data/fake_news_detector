@@ -6,13 +6,15 @@ Built as a modular, explainable, and privacy-conscious system, this project comb
 
 <img src="images/icon.ico" height="400" width="200">
 
-
 ---
 
 ## ✨ Key Features
 
 * 🔍 **Content Analysis with BERT**
   Classifies articles into **Neutral**, **Biased**, or **Contradictory** using a fine-tuned transformer model.
+
+ <img src="images/output1.png" height="600" width="400">
+
 
 * 🏛️ **Publisher Credibility Scoring**
   Looks up known publishers from a curated Supabase database (score range: 0–10).
