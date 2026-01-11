@@ -4,7 +4,7 @@ An end-to-end **Fake News Detection** web application that analyzes online news 
 
 Built as a modular, explainable, and privacy-conscious system, this project combines ML inference with transparent scoring logic and a clean web UI.
 
-<img src="images/speed_icon.ico" height="600" width="500">
+<img src="images/icon.ico" height="400" width="200">
 
 
 ---
