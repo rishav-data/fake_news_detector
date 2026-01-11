@@ -13,7 +13,7 @@ Built as a modular, explainable, and privacy-conscious system, this project comb
 * 🔍 **Content Analysis with BERT**
   Classifies articles into **Neutral**, **Biased**, or **Contradictory** using a fine-tuned transformer model.
 
- <img src="images/output1.png" height="600" width="400">
+ <img src="images/output1.png" height="1000" width="700">
 
 
 * 🏛️ **Publisher Credibility Scoring**
