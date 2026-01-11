@@ -75,9 +75,7 @@ Built as a modular, explainable, and privacy-conscious system, this project comb
 
 ## 🖼️ System Architecture
 
-![System Flow Diagram](DFD.png)
-
-The pipeline clearly separates scraping, NLP inference, scoring, and verdict generation to keep the system modular and explainable.
+<img src="images/file structure.png" height="4000" width="1000">
 
 ---
 
