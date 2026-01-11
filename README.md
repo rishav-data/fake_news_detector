@@ -1,3 +1,5 @@
+# LIVE DEPLOYMENT NOT POSSIBLE ON RENDER DUE TO BIG MODEL SIZE CAUSING GIT TO CHOKE ON PUSHES. LIVE DOWNLOAD LINK ON itch.io COMING SOON
+
 # 📰 Fake News Detection System
 
 An end-to-end **Fake News Detection** web application that analyzes online news articles using **Natural Language Processing**, **BERT-based content classification**, and **publisher credibility scoring** to estimate the likelihood of misinformation.
