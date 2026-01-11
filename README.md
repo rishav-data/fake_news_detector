@@ -73,30 +73,24 @@ Built as a modular, explainable, and privacy-conscious system, this project comb
 
 ---
 
-## 🖼️ System Architecture
-
-<img src="images/file structure.png" height="1000" width="200">
-
----
-
 ## 🖥️ Web Interface
 
 ### Home Page
 
-![Home UI](UI 1.png)
+<img src="images/UI 1.png" height="2000" width="4000">
 
 Users can choose whether to submit a **link** or **article text**.
 
 ### Submit Article Link
 
-![Article Link UI](ui2.png)
+<img src="images/ui2.png" height="2000" width="4000">
 
 * Automatically extracts article content
 * Optional publisher input
 
 ### Submit Article Text
 
-![Article Text UI](ui3.png)
+<img src="images/ui3.png" height="2000" width="4000">
 
 * Paste full article content directly
 * Optional publisher input
@@ -107,7 +101,7 @@ Users can choose whether to submit a **link** or **article text**.
 
 ### Credibility Result Page
 
-![Result UI](output1.png)
+<img src="images/output 2.png" height="2000" width="4000">
 
 Displays:
 
@@ -115,14 +109,6 @@ Displays:
 * Verdict explanation
 * Content category
 * Publisher credibility
-
-### Console Prediction (BERT)
-
-![Model Prediction](output 2.png)
-
-Shows raw model prediction and confidence during development/debugging.
-
----
 
 ## 🤖 Model Training
 
@@ -134,11 +120,11 @@ The project includes a full **BERT training pipeline** using HuggingFace Transfo
 
 ### Training Progress
 
-![Training Progress](during training.png)
+<img src="images/during training.png" height="1000" width="3000">
 
 ### Evaluation Results
 
-![Evaluation Results](eval test.png)
+<img src="images/eval test.png" height="500" width="2000">
 
 Achieves high accuracy on the test set, demonstrating strong contextual understanding.
 
