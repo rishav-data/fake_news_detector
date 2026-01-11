@@ -75,7 +75,7 @@ Built as a modular, explainable, and privacy-conscious system, this project comb
 
 ## 🖼️ System Architecture
 
-<img src="images/file structure.png" height="1300" width="400">
+<img src="images/file structure.png" height="1000" width="200">
 
 ---
 
