@@ -13,9 +13,6 @@ Built as a modular, explainable, and privacy-conscious system, this project comb
 * 🔍 **Content Analysis with BERT**
   Classifies articles into **Neutral**, **Biased**, or **Contradictory** using a fine-tuned transformer model.
 
- <img src="images/output1.png" height="1000" width="700">
-
-
 * 🏛️ **Publisher Credibility Scoring**
   Looks up known publishers from a curated Supabase database (score range: 0–10).
 
@@ -25,8 +22,7 @@ Built as a modular, explainable, and privacy-conscious system, this project comb
 * 🌐 **Flexible Input**
   Analyze either:
 
-  * A **news article URL** (auto-scraped), or
-  * **Raw article text** (pasted directly).
+<img src="images/output1.png" height="700" width="850">
 
 * 🔐 **Privacy First**
   No article text or user data is stored. All inference happens in-memory.
@@ -34,6 +30,8 @@ Built as a modular, explainable, and privacy-conscious system, this project comb
 ---
 
 ## 🧠 How the System Works
+
+<img src="images/DFD.png" height="2000" width="4000">
 
 1. **User Input**
    User submits a news article as a link or raw text.
