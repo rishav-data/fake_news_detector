@@ -4,6 +4,7 @@
 # DOWNLOAD THE EXECUTEABLE .exe FILE 
 
 FROM DRIVE (https://drive.google.com/drive/folders/1uQYrXVQ6V-DJXEkGeUqBnXd-AaHEbwOa?usp=drive_link).
+
 FROM file.kiwi (https://file.kiwi/d11ef2e1#EaDDD0zIu0L6KLetXWB9lw).
 
 # 📰 Fake News Detection System
