@@ -30,6 +30,7 @@ fake_news_detector/
 ├── utils/
 │   ├── text_cleaner.py
 │   └── publisher_normalizer.py
+│   └── external_validator.py
 |  
 ├── data/
 |   ├──train.csv
