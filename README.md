@@ -120,7 +120,7 @@ Users can choose whether to submit an **article link** or **article text**.
 
 ### Credibility Result Page
 
-<img src="images/output 2.png" height="2000" width="4000">
+<img src="images/output2.png" height="2000" width="4000">
 
 The result view presents:
 
