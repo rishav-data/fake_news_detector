@@ -11,7 +11,11 @@ FROM file.kiwi (https://file.kiwi/d11ef2e1#EaDDD0zIu0L6KLetXWB9lw).
 
 An end-to-end **Fake News Detection** web application that evaluates online news articles using **Natural Language Processing**, **source credibility analysis**, and **external content validation** to estimate the likelihood of misinformation.
 
+<img src="images/icon.ico" height="400" width="200">
+
 The system is designed to be **modular**, **explainable**, and **privacy-conscious**, combining machine learning inference with transparent multi-factor scoring and a clean, accessible web interface.
+
+<img src="images/output1.png" height="700" width="850">
 
 ---
 
@@ -38,6 +42,8 @@ The system is designed to be **modular**, **explainable**, and **privacy-conscio
 ---
 
 ## 🧠 How the System Works
+
+<img src="images/New DFD.png" height="2000" width="4000">
 
 1. **User Input**
    The user submits either a news article link or raw article text.
@@ -90,14 +96,20 @@ The final verdict is designed to assist decision-making while clearly exposing h
 
 ### Home Page
 
+<img src="images/ui1.png" height="2000" width="4000">
+
 Users can choose whether to submit an **article link** or **article text**.
 
 ### Submit Article Link
+
+<img src="images/ui2.png" height="2000" width="4000">
 
 * Automatically extracts article content
 * Accepts optional publisher input
 
 ### Submit Article Text
+
+<img src="images/ui3.png" height="2000" width="4000">
 
 * Allows direct text submission
 * Accepts optional publisher input
@@ -107,6 +119,8 @@ Users can choose whether to submit an **article link** or **article text**.
 ## 📊 Example Output
 
 ### Credibility Result Page
+
+<img src="images/output 2.png" height="2000" width="4000">
 
 The result view presents:
 
@@ -128,7 +142,11 @@ The project includes a complete **BERT fine-tuning pipeline** using HuggingFace 
 
 ### Training Progress
 
+<img src="images/during training.png" height="1000" width="3000">
+
 ### Evaluation Results
+
+<img src="images/eval test.png" height="500" width="2000">
 
 The model demonstrates strong contextual understanding and high accuracy on the held-out test set.
 
