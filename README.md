@@ -1,7 +1,7 @@
 # LIVE DEPLOYMENT NOT POSSIBLE ON RENDER DUE TO BIG MODEL SIZE CAUSING GIT TO CHOKE ON PUSHES. LIVE DOWNLOAD LINK ON itch.io NOT AVAILABLE EITHER DUE TO HUGE SIZE OF MODEL.
 
 
-# DOWNLOAD THE EXECUTEABLE .exe FILE 
+# DOWNLOAD THE EXECUTEABLE .exe FILE (THESE ARE OLD VERSIONS WITHOUT THE EXTERNAL VALIDATION MODULES)
 
 FROM DRIVE (https://drive.google.com/drive/folders/1uQYrXVQ6V-DJXEkGeUqBnXd-AaHEbwOa?usp=drive_link).
 
@@ -9,76 +9,80 @@ FROM file.kiwi (https://file.kiwi/d11ef2e1#EaDDD0zIu0L6KLetXWB9lw).
 
 # 📰 Fake News Detection System
 
-An end-to-end **Fake News Detection** web application that analyzes online news articles using **Natural Language Processing**, **BERT-based content classification**, and **publisher credibility scoring** to estimate the likelihood of misinformation.
+An end-to-end **Fake News Detection** web application that evaluates online news articles using **Natural Language Processing**, **source credibility analysis**, and **external content validation** to estimate the likelihood of misinformation.
 
-Built as a modular, explainable, and privacy-conscious system, this project combines ML inference with transparent scoring logic and a clean web UI.
-
-<img src="images/icon.ico" height="400" width="200">
+The system is designed to be **modular**, **explainable**, and **privacy-conscious**, combining machine learning inference with transparent multi-factor scoring and a clean, accessible web interface.
 
 ---
 
 ## ✨ Key Features
 
 * 🔍 **Content Analysis with BERT**
-  Classifies articles into **Neutral**, **Biased**, or **Contradictory** using a fine-tuned transformer model.
+  Classifies articles into **Neutral**, **Biased**, or **Contradictory** using a fine-tuned transformer-based language model.
 
 * 🏛️ **Publisher Credibility Scoring**
-  Looks up known publishers from a curated Supabase database (score range: 0–10).
+  Evaluates the historical reliability of known publishers using a curated Supabase database.
 
-* 🧮 **Explainable Final Verdict**
-  Combines content score + publisher score into a transparent, threshold-based credibility verdict.
+* 🌐 **External Content Validation**
+  Scans the broader web to check whether similar reporting exists across multiple independent sources, strengthening confidence in widely corroborated news.
 
-* 🌐 **Flexible Input**
-  Analyze either:
+* 🧮 **Explainable Scoring Framework (Out of 30)**
+  Combines content quality, publisher reliability, and external corroboration into a transparent, interpretable score.
 
-<img src="images/output1.png" height="700" width="850">
+* 🌍 **Flexible Input Methods**
+  Supports both **article URLs** (auto-scraped) and **raw article text** (direct input).
 
-* 🔐 **Privacy First**
-  No article text or user data is stored. All inference happens in-memory.
+- 🔐 **Privacy First Architecture**
+  No article content or user data is stored. All processing is performed in-memory and discarded after analysis.
 
 ---
 
 ## 🧠 How the System Works
 
-<img src="images/DFD.png" height="2000" width="4000">
-
 1. **User Input**
-   User submits a news article as a link or raw text.
+   The user submits either a news article link or raw article text.
 
 2. **Article Extraction**
 
-   * URLs are scraped using **Firecrawl** (with BeautifulSoup fallback).
-   * Raw text is passed directly.
+   * URLs are scraped using **Firecrawl**, with a BeautifulSoup-based fallback.
+   * Raw text is passed directly into the analysis pipeline.
 
-3. **BERT Classification**
+3. **BERT-Based Content Classification**
    The article is classified into one of three categories:
 
    * Neutral
    * Biased
    * Contradictory
 
-4. **Scoring Logic**
+4. **Multi-Factor Scoring Logic (0–30)**
 
-   **Category Score**
+   **Category Score (0–10)**
 
    * Neutral → 10
    * Biased → 5
    * Contradictory → 0
 
-   **Publisher Score**
+   **Publisher Credibility Score (0–10)**
 
-   * Retrieved from Supabase (0–10)
-   * Defaults to 0 if unknown
+   * Retrieved from Supabase for known publishers
+   * Defaults to 0 if the publisher is unknown
 
-5. **Final Verdict**
+   **External Validation Score (0–10)**
+
+   * Measures whether similar or matching news appears across other reputable sources
+   * Higher scores indicate stronger cross-source corroboration
+
+5. **Final Verdict Generation**
 
    ```text
-   Total Score = Category Score + Publisher Score
+   Total Score = Category Score + Publisher Score + External Validation Score
 
-   ≥ 15  → Possible high credibility
-   7–14  → Needs further verification
+   ≥ 20  → Possible high credibility
+   7–19  → Needs further verification
    < 7   → Credibility uncertain
    ```
+
+The final verdict is designed to assist decision-making while clearly exposing how each component contributes to the result.
 
 ---
 
@@ -86,23 +90,17 @@ Built as a modular, explainable, and privacy-conscious system, this project comb
 
 ### Home Page
 
-<img src="images/UI 1.png" height="2000" width="4000">
-
-Users can choose whether to submit a **link** or **article text**.
+Users can choose whether to submit an **article link** or **article text**.
 
 ### Submit Article Link
 
-<img src="images/ui2.png" height="2000" width="4000">
-
 * Automatically extracts article content
-* Optional publisher input
+* Accepts optional publisher input
 
 ### Submit Article Text
 
-<img src="images/ui3.png" height="2000" width="4000">
-
-* Paste full article content directly
-* Optional publisher input
+* Allows direct text submission
+* Accepts optional publisher input
 
 ---
 
@@ -110,32 +108,29 @@ Users can choose whether to submit a **link** or **article text**.
 
 ### Credibility Result Page
 
-<img src="images/output 2.png" height="2000" width="4000">
+The result view presents:
 
-Displays:
+* Final credibility score (out of 30)
+* Verdict interpretation
+* Content category classification
+* Publisher credibility score
+* Contribution of external validation
 
-* Final credibility score
-* Verdict explanation
-* Content category
-* Publisher credibility
+---
 
 ## 🤖 Model Training
 
-The project includes a full **BERT training pipeline** using HuggingFace Transformers.
+The project includes a complete **BERT fine-tuning pipeline** using HuggingFace Transformers.
 
 * Model: `bert-base-uncased`
 * Labels: Neutral, Biased, Contradictory
-* Frameworks: PyTorch + HuggingFace Trainer
+* Frameworks: PyTorch, HuggingFace Trainer
 
 ### Training Progress
 
-<img src="images/during training.png" height="1000" width="3000">
-
 ### Evaluation Results
 
-<img src="images/eval test.png" height="500" width="2000">
-
-Achieves high accuracy on the test set, demonstrating strong contextual understanding.
+The model demonstrates strong contextual understanding and high accuracy on the held-out test set.
 
 ---
 
@@ -145,10 +140,10 @@ Achieves high accuracy on the test set, demonstrating strong contextual understa
 fake_news_detector/
 │
 ├── app.py                  # Flask app entry point
-├── config.py               # Environment & config loading
+├── config.py               # Environment & configuration loading
 ├── requirements.txt
 │
-├── scraping/               # Article extraction
+├── scraping/               # Article extraction logic
 │   ├── article_reader.py
 │   └── scraper.py
 │
@@ -156,7 +151,7 @@ fake_news_detector/
 │   ├── bert_classifier.py
 │   └── train_bert.py
 │
-├── scoring/                # Scoring logic
+├── scoring/                # Scoring & verdict logic
 │   ├── category_score.py
 │   ├── publisher_score.py
 │   └── verdict.py
@@ -165,16 +160,17 @@ fake_news_detector/
 │   ├── supabase_client.py
 │   └── schema.sql
 │
-├── utils/                  # Helpers
+├── utils/                  # Helper utilities
 │   ├── text_cleaner.py
 │   └── publisher_normalizer.py
+|   ├── external_validation.py
 │
 ├── data/                   # Training datasets
 │   ├── train.csv
 │   ├── val.csv
 │   └── test.csv
 │
-├── templates/              # HTML UI
+├── templates/              # HTML UI templates
 │   ├── index.html
 │   ├── article_link.html
 │   └── article_text.html
@@ -188,6 +184,7 @@ fake_news_detector/
 
 * **Backend**: Python 3.10, Flask
 * **NLP / ML**: BERT, HuggingFace Transformers, PyTorch
+* **External Validation**: Web search & similarity matching
 * **Scraping**: Firecrawl, Requests, BeautifulSoup
 * **Database**: Supabase (PostgreSQL)
 * **Frontend**: HTML, CSS (Flask templates)
@@ -201,7 +198,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Make sure your `.env` file contains:
+Ensure your `.env` file contains:
 
 ```env
 FIRECRAWL_API_KEY=your_key
@@ -213,13 +210,12 @@ SUPABASE_KEY=your_key
 
 ## ⚠️ Disclaimer
 
-This system provides an **automated credibility estimate** and is intended as a **decision-support tool**, not a definitive judgment of truth.
+This system provides an **automated credibility assessment** intended as a **decision-support tool**. It does not replace professional fact-checking or journalistic verification.
 
 ---
 
 ## 👨‍💻 Author
 
-Built as part of an AI/ML-focused project exploring **misinformation detection**, **explainable scoring**, and **responsible NLP deployment**.
+Built as part of an AI/ML-focused project exploring **misinformation detection**, **multi-source validation**, **explainable scoring**, and **responsible NLP deployment**.
 
-If this helped you, feel free to ⭐ the repository and experiment further.
-
+If you find this project useful, consider ⭐ starring the repository and experimenting with further enhancements.
