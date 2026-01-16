@@ -9,7 +9,7 @@ class Config:
     PORT = int(os.getenv("PORT", 5000))
 
     # Firecrawl
-    FIRECRAWL_API_KEY = os.getenv("fc-a662a546acd24baa9345148a3bdb58cf")
+    FIRECRAWL_API_KEY = os.getenv("put firecrawl api here")
 
     # Supabase
     SUPABASE_URL = os.getenv("SUPABASE_URL")
