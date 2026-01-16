@@ -8,6 +8,7 @@ from scoring.category_score import category_score
 from scoring.publisher_score import get_publisher_score
 from scoring.verdict import final_verdict
 from utils.publisher_normalizer import normalize_publisher
+from utils.external_validator import external_validation_score
 
 
 def create_app():
@@ -52,11 +53,15 @@ def create_app():
             if not article_text:
                 return jsonify({"error": "Unable to extract article text"}), 400
 
-            # BERT classification
+            # -------------------------
+            # BERT CLASSIFICATION
+            # -------------------------
             category = classify_text(article_text)
             cat_score = category_score(category)
 
-            # Publisher handling (safe)
+            # -------------------------
+            # PUBLISHER SCORE
+            # -------------------------
             publisher_raw = request.form.get("publisher")
             try:
                 publisher = normalize_publisher(publisher_raw) if publisher_raw else None
@@ -65,7 +70,21 @@ def create_app():
 
             pub_score = get_publisher_score(publisher)
 
-            verdict = final_verdict(cat_score, pub_score)
+            # -------------------------
+            # EXTERNAL VALIDATION SCORE
+            # -------------------------
+            external_score = external_validation_score(article_text)
+
+            # -------------------------
+            # FINAL VERDICT (OUT OF 30)
+            # -------------------------
+            verdict = final_verdict(
+                cat_score,
+                pub_score,
+                external_score
+            )
+
+            total_score = cat_score + pub_score + external_score
 
             # ✅ ALWAYS RETURN
             return render_template(
@@ -74,7 +93,8 @@ def create_app():
                 category_score=cat_score,
                 publisher=publisher or "Unknown",
                 publisher_score=pub_score,
-                final_score=cat_score + pub_score,
+                external_score=external_score,
+                final_score=total_score,
                 verdict=verdict
             )
 
