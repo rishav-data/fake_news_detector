@@ -131,7 +131,7 @@
     <div class="score-card">
         <div class="score-label">Final Credibility Score</div>
         <p class="final-score">{{ final_score }}</p>
-        <div class="verdict">{{ verdict }}</div>
+        <div class="verdict"><strong>{{ verdict }}</strong></div>
     </div>
 
     <!-- BREAKDOWN -->
@@ -149,12 +149,22 @@
             <p>Publisher Score: <span class="highlight">{{ publisher_score }}</span></p>
         </div>
 
+        <div class="detail-box">
+            <h3>External Validation</h3>
+             <p>Cross-publication Score: <span class="highlight">{{ external_score }}</span></p>
+               <p>This score reflects whether
+                similar news is reported by other outlets.
+            
+               </p>
+
+        </div>
+
         <div class="detail-box interpretation">
             <h3>Score Interpretation</h3>
             <p>
-                <strong>15 or above</strong> → Possible high credibility<br>
-                <strong>7 to 14</strong> → Needs further verification<br>
-                <strong>Below 7</strong> → Credibility uncertain
+                <strong>20 or above</strong> → Possible high credibility<br>
+                <strong>11 to 19</strong> → Needs further verification<br>
+                <strong>Below 10</strong> → Credibility uncertain
             </p>
             <p>
                 This system provides an automated credibility estimate and should
