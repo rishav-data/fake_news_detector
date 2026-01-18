@@ -7,7 +7,7 @@ FROM DRIVE (https://drive.google.com/drive/folders/1uQYrXVQ6V-DJXEkGeUqBnXd-AaHE
 
 FROM file.kiwi (https://file.kiwi/d11ef2e1#EaDDD0zIu0L6KLetXWB9lw).
 
-# 📰 Fake News Detection System
+# Fake News Detection System
 
 An end-to-end **Fake News Detection** web application that evaluates online news articles using **Natural Language Processing**, **source credibility analysis**, and **external content validation** to estimate the likelihood of misinformation.
 
@@ -19,29 +19,29 @@ The system is designed to be **modular**, **explainable**, and **privacy-conscio
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-* 🔍 **Content Analysis with BERT**
+* **Content Analysis with BERT**
   Classifies articles into **Neutral**, **Biased**, or **Contradictory** using a fine-tuned transformer-based language model.
 
-* 🏛️ **Publisher Credibility Scoring**
+* **Publisher Credibility Scoring**
   Evaluates the historical reliability of known publishers using a curated Supabase database.
 
-* 🌐 **External Content Validation**
+* **External Content Validation**
   Scans the broader web to check whether similar reporting exists across multiple independent sources, strengthening confidence in widely corroborated news.
 
-* 🧮 **Explainable Scoring Framework (Out of 30)**
+* **Explainable Scoring Framework (Out of 30)**
   Combines content quality, publisher reliability, and external corroboration into a transparent, interpretable score.
 
-* 🌍 **Flexible Input Methods**
+* **Flexible Input Methods**
   Supports both **article URLs** (auto-scraped) and **raw article text** (direct input).
 
-- 🔐 **Privacy First Architecture**
+- **Privacy First Architecture**
   No article content or user data is stored. All processing is performed in-memory and discarded after analysis.
 
 ---
 
-## 🧠 How the System Works
+## How the System Works
 
 <img src="images/New DFD.png" height="2000" width="4000">
 
@@ -92,7 +92,7 @@ The final verdict is designed to assist decision-making while clearly exposing h
 
 ---
 
-## 🖥️ Web Interface
+## Web Interface
 
 ### Home Page
 
@@ -116,7 +116,7 @@ Users can choose whether to submit an **article link** or **article text**.
 
 ---
 
-## 📊 Example Output
+## Example Output
 
 ### Credibility Result Page
 
@@ -132,7 +132,7 @@ The result view presents:
 
 ---
 
-## 🤖 Model Training
+## Model Training
 
 The project includes a complete **BERT fine-tuning pipeline** using HuggingFace Transformers.
 
@@ -152,7 +152,7 @@ The model demonstrates strong contextual understanding and high accuracy on the 
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```text
 fake_news_detector/
@@ -209,7 +209,7 @@ fake_news_detector/
 
 ---
 
-## 🚀 Running the Project
+## Running the Project
 
 ```bash
 pip install -r requirements.txt
@@ -232,7 +232,7 @@ This system provides an **automated credibility assessment** intended as a **dec
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 Built as part of an AI/ML-focused project exploring **misinformation detection**, **multi-source validation**, **explainable scoring**, and **responsible NLP deployment**.
 
